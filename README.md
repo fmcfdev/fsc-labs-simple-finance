@@ -9,7 +9,7 @@ Projeto frontend para controle de finanças pessoais. Iniciativa oferecida pela 
 - **Protótipo no Figma**: [Mobile](https://www.figma.com/design/vWD3LR5j635P3xFCXBJxyc/Dashboard-Financeira?node-id=102-97&p=f&t=RxZ0kY3LHHV29KDZ-0) | [Desktop](https://www.figma.com/design/vWD3LR5j635P3xFCXBJxyc/Dashboard-Financeira?node-id=0-1&p=f&t=RxZ0kY3LHHV29KDZ-0)
 - **Guia de convenções para commits**: https://www.conventionalcommits.org/
 
-### 🛠️ Tecnologias previstas
+### 🛠️ Tecnologias Previstas
 
 - Next.js
 - React
