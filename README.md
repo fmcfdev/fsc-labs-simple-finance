@@ -29,7 +29,7 @@ Projeto frontend para controle de finanças pessoais. Iniciativa oferecida pela 
 4. Envie uma PR (Pull Request) com uma descrição clara do que foi feito
 5. Antes de abrir uma PR, verifique se sua branch está atualizada com a branch main do repositório original (upstream), e não apenas com a main do seu fork.
 
-### 📌 Boas práticas
+### 📌 Boas Práticas
 
 - Siga o protótipo disponível no Figma.
 - Sempre relacione sua PR a uma issue existente.
