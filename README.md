@@ -2,6 +2,8 @@
 
 Projeto frontend para controle de finanças pessoais. Iniciativa oferecida pela formação **[Full Stack Club](https://lp.fullstackclub.com.br/)**.
 
+Link da aplicação na Vercel: https://fsc-labs-simple-finance.vercel.app/
+
 ### 🔗 Recursos úteis
 
 - **Kanban para acompanhamento das Issues**: [Link](https://github.com/users/fmcfdev/projects/1)

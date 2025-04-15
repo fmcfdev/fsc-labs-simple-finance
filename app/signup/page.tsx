@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Input } from "../_lib/components/ui/input";
-import { Label } from "../_lib/components/ui/label";
 import { Button } from "../_lib/components/ui/button";
+import Logo from "../_components/logo";
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,14 +16,7 @@ export default function SignUp() {
     <main className="flex min-h-screen flex-col items-center">
       {/* Header com Logo */}
       <div className="relative mb-[50px]">
-        <Image
-          src="/images/logo.svg"
-          alt="Logo"
-          width={330}
-          height={26}
-          priority
-          className="mb-[50px]"
-        />
+        <Logo className="mb-[50px]" />
 
         <h1 className="mb-[30px] h-[26px] text-[24px] font-semibold text-white">
           Criar sua conta
@@ -43,18 +36,22 @@ export default function SignUp() {
       <form className="mb-[50px] w-full space-y-[20px]">
         <div className="relative">
           <Input
-            id="name"
+            id="first_name"
             type="text"
             required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black placeholder:text-transparent focus:border-0 focus:ring-0 focus:outline-none"
-            placeholder="Nome"
+            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
+            placeholder="Primeiro nome"
           />
-          <Label
-            htmlFor="name"
-            className="absolute top-1/2 left-[22px] -translate-y-1/2 text-gray-500 transition-all peer-focus:-translate-y-8 peer-focus:text-xs peer-focus:text-black"
-          >
-            Nome
-          </Label>
+        </div>
+
+        <div className="relative">
+          <Input
+            id="last_name"
+            type="text"
+            required
+            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
+            placeholder="Sobrenome"
+          />
         </div>
 
         <div className="relative">
@@ -62,15 +59,9 @@ export default function SignUp() {
             id="email"
             type="email"
             required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black placeholder:text-transparent focus:border-0 focus:ring-0 focus:outline-none"
+            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Email"
           />
-          <Label
-            htmlFor="email"
-            className="absolute top-1/2 left-[22px] -translate-y-1/2 text-[#7A7A7A] transition-all peer-focus:-translate-y-8 peer-focus:text-xs peer-focus:text-black"
-          >
-            Email
-          </Label>
         </div>
 
         <div className="relative">
@@ -78,15 +69,9 @@ export default function SignUp() {
             id="password"
             type={showPassword ? "text" : "password"}
             required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black placeholder:text-transparent focus:border-0 focus:ring-0 focus:outline-none"
+            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Senha"
           />
-          <Label
-            htmlFor="password"
-            className="absolute top-1/2 left-[22px] -translate-y-1/2 text-gray-500 transition-all peer-focus:-translate-y-8 peer-focus:text-xs peer-focus:text-black"
-          >
-            Senha
-          </Label>
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
@@ -102,18 +87,12 @@ export default function SignUp() {
 
         <div className="relative">
           <Input
-            id="confirmPassword"
+            id="confirm_password"
             type={showConfirmPassword ? "text" : "password"}
             required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black placeholder:text-transparent focus:border-0 focus:ring-0 focus:outline-none"
+            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Confirme a senha"
           />
-          <Label
-            htmlFor="confirmPassword"
-            className="absolute top-1/2 left-[22px] -translate-y-1/2 text-gray-500 transition-all peer-focus:-translate-y-8 peer-focus:text-xs peer-focus:text-black"
-          >
-            Confirme a senha
-          </Label>
           <button
             type="button"
             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
