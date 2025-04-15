@@ -22,6 +22,10 @@ input:not(:placeholder-shown) ~ label {
 
 @custom-variant dark (&:is(.dark *));
 
+body {
+  @apply min-h-screen bg-[#141414] text-white antialiased;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

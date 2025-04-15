@@ -18,11 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body
-        className={`${inter.className} ${inter.className} antialiased`}
-        cz-shortcut-listen="false"
-      >
-        {children}
+      <body className={`${inter.className}`} cz-shortcut-listen="false">
+        <div className="max-w-[390px] p-[30px]" style={{ margin: "0 auto" }}>
+          {children}
+        </div>
       </body>
     </html>
   );
