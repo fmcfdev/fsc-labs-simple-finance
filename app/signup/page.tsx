@@ -16,15 +16,6 @@ export default function SignUp() {
     <main className="flex min-h-screen flex-col items-center">
       {/* Header com Logo */}
       <div className="relative mb-[50px]">
-        <Image
-          src="/images/logo.svg"
-          alt="Logo"
-          width={330}
-          height={26}
-          priority
-          className="mb-[50px]"
-        />
-
         <h1 className="mb-[30px] h-[26px] text-[24px] font-semibold text-white">
           Criar sua conta
         </h1>
