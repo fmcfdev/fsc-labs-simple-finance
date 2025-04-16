@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import { Input } from "../_lib/components/ui/input";
 import { Button } from "../_lib/components/ui/button";
 import Logo from "../_components/Logo";
+import { FloatingLabel } from "../_components/FloatingLabel";
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -24,7 +24,7 @@ export default function SignUp() {
         <p className="text-sm font-normal">
           Se já possui uma conta, você consegue fazer{" "}
           <Link
-            href="/signin"
+            href="/login"
             className="font-semibold text-green-500 underline decoration-green-500 underline-offset-4 hover:text-green-400"
           >
             Login aqui!
@@ -34,43 +34,21 @@ export default function SignUp() {
 
       {/* Form */}
       <form className="mb-[50px] w-full space-y-[20px]">
-        <div className="relative">
-          <Input
-            id="first_name"
-            type="text"
-            required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
-            placeholder="Primeiro nome"
-          />
-        </div>
+        <FloatingLabel
+          id="first_name"
+          type="text"
+          label="Primeiro nome"
+          required
+        />
+        <FloatingLabel id="last_name" type="text" label="Sobrenome" required />
+        <FloatingLabel id="email" type="email" label="Email" required />
 
         <div className="relative">
-          <Input
-            id="last_name"
-            type="text"
-            required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
-            placeholder="Sobrenome"
-          />
-        </div>
-
-        <div className="relative">
-          <Input
-            id="email"
-            type="email"
-            required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black focus:border-0 focus:ring-0 focus:outline-none"
-            placeholder="Email"
-          />
-        </div>
-
-        <div className="relative">
-          <Input
+          <FloatingLabel
             id="password"
             type={showPassword ? "text" : "password"}
+            label="Senha"
             required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black focus:border-0 focus:ring-0 focus:outline-none"
-            placeholder="Senha"
           />
           <button
             type="button"
@@ -86,12 +64,11 @@ export default function SignUp() {
         </div>
 
         <div className="relative">
-          <Input
+          <FloatingLabel
             id="confirm_password"
             type={showConfirmPassword ? "text" : "password"}
+            label="Confirme a senha"
             required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black focus:border-0 focus:ring-0 focus:outline-none"
-            placeholder="Confirme a senha"
           />
           <button
             type="button"
