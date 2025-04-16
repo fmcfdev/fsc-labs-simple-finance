@@ -1,24 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-input:focus ~ label,
-input:not(:placeholder-shown) ~ label {
-  transform: translateY(-2rem) scale(0.75);
-  background-color: white;
-  padding: 0 0.2rem;
-  color: black;
-}
-
-.peer:focus ~ label,
-.peer:not(:placeholder-shown) ~ label {
-  transform: translateY(-2rem) scale(0.75);
-  background-color: white;
-  padding: 0 0.2rem;
-  color: black;
-}
 
 /* @custom-variant dark (&:is(.dark *)); */
 
@@ -64,27 +45,6 @@ body {
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-}
-
-.underline-offset-4 {
-  text-underline-offset: 3px;
-  margin-left: 5px;
-}
-
-.text-gray-400 {
-  color: oklch(1 0 0);
-}
-
-.text-green-500 {
-  color: #55d462;
-}
-
-.border-gray-700 {
-  border-color: oklch(0.77 0.19 145.22);
-}
-
-.bg-green-600 {
-  background-color: #55d462;
 }
 
 :root {
