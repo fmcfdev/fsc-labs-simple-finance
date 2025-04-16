@@ -5,15 +5,21 @@ import Link from "next/link";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { Input } from "../_lib/components/ui/input";
 import { Button } from "../_lib/components/ui/button";
 import { useAuthContext } from "../_contexts/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupFormSchema } from "../_forms/schemas/user";
 import { z } from "zod";
 import ThemeToggleBar from "../_components/ThemeToggle";
+import { FloatingLabel } from "../_components/FloatingLabelInput";
 
-type SignUpFormData = z.infer<typeof signupFormSchema>;
+interface SignUpFormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  passwordConfirmation: string;
+}
 
 export default function SignUp() {
   const { signup } = useAuthContext();
@@ -56,15 +62,20 @@ export default function SignUp() {
         <h1 className="mb-[30px] h-[26px] text-[24px] font-semibold">
           Criar sua conta
         </h1>
-        <p className="text-sm font-normal">
-          Se já possui uma conta, você consegue fazer{" "}
-          <Link
-            href="/signin"
-            className="font-semibold text-[var(--primary)] underline decoration-[var(--primary)] underline-offset-4"
-          >
-            Login aqui!
-          </Link>
-        </p>
+        <div className="flex flex-col gap-1">
+          <p className="text-sm font-normal text-white">
+            Se já possui uma conta, você consegue.
+          </p>
+          <div className="flex items-center space-x-2">
+            <span className="text-sm font-normal text-white">fazer</span>
+            <Link
+              href="/signin"
+              className="text-sm font-semibold text-green-500 underline decoration-green-500 decoration-2 underline-offset-4 hover:text-green-400"
+            >
+              Login aqui!
+            </Link>
+          </div>
+        </div>
       </div>
 
       {/* Form */}
@@ -72,106 +83,96 @@ export default function SignUp() {
         className="mb-[50px] w-full space-y-[20px]"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="relative">
-          <Input
-            id="firstName"
-            type="text"
-            {...register("firstName")}
-            className="h-[62px] w-full rounded-[12px] border-0 bg-[var(--input)] px-[22px] text-[var(--input-foreground)] focus:border-0 focus:ring-0 focus:outline-none"
-            placeholder="Primeiro nome"
-          />
-          {errors.firstName && (
-            <p className="p-1 text-sm text-[var(--danger)]">
-              {errors.firstName.message}
-            </p>
-          )}
-        </div>
+        <FloatingLabel
+          id="firstName"
+          type="text"
+          label="Primeiro nome"
+          required
+          {...register("firstName")}
+        />
+        {errors.firstName && (
+          <p className="p-1 text-sm text-[var(--danger)]">
+            {errors.firstName.message}
+          </p>
+        )}
+
+        <FloatingLabel
+          id="lastName"
+          type="text"
+          label="Sobrenome"
+          required
+          {...register("lastName")}
+        />
+        {errors.lastName && (
+          <p className="p-1 text-sm text-[var(--danger)]">
+            {errors.lastName.message}
+          </p>
+        )}
+
+        <FloatingLabel
+          id="email"
+          type="email"
+          label="Email"
+          required
+          {...register("email")}
+        />
+        {errors.email && (
+          <p className="p-1 text-sm text-[var(--danger)]">
+            {errors.email.message}
+          </p>
+        )}
 
         <div className="relative">
-          <Input
-            id="lastName"
-            type="text"
-            {...register("lastName")}
-            className="h-[62px] w-full rounded-[12px] border-0 bg-[var(--input)] px-[22px] text-[var(--input-foreground)] focus:border-0 focus:ring-0 focus:outline-none"
-            placeholder="Sobrenome"
+          <FloatingLabel
+            id="password"
+            type={showPassword ? "text" : "password"}
+            label="Senha"
+            required
+            {...register("password")}
           />
-          {errors.lastName && (
-            <p className="p-1 text-sm text-[var(--danger)]">
-              {errors.lastName.message}
-            </p>
-          )}
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-[22px] top-1/2 -translate-y-1/2 text-[var(--muted-foreground)]"
+          >
+            {showPassword ? (
+              <Eye className="h-4 w-4" />
+            ) : (
+              <EyeOff className="h-4 w-4" />
+            )}
+          </button>
         </div>
+        {errors.password && (
+          <p className="p-1 text-sm text-[var(--danger)]">
+            {errors.password.message}
+          </p>
+        )}
 
         <div className="relative">
-          <Input
-            id="email"
-            type="email"
-            {...register("email")}
-            className="h-[62px] w-full rounded-[12px] border-0 bg-[var(--input)] px-[22px] text-[var(--input-foreground)] focus:border-0 focus:ring-0 focus:outline-none"
-            placeholder="Email"
+          <FloatingLabel
+            id="passwordConfirmation"
+            type={showConfirmPassword ? "text" : "password"}
+            label="Confirme a senha"
+            required
+            {...register("passwordConfirmation")}
           />
-          {errors.email && (
-            <p className="p-1 text-sm text-[var(--danger)]">
-              {errors.email.message}
-            </p>
-          )}
+          <button
+            type="button"
+            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            className="absolute right-[22px] top-1/2 -translate-y-1/2 text-[var(--muted-foreground)]"
+          >
+            {showConfirmPassword ? (
+              <Eye className="h-4 w-4" />
+            ) : (
+              <EyeOff className="h-4 w-4" />
+            )}
+          </button>
         </div>
-
-        <div>
-          <div className="relative">
-            <Input
-              id="password"
-              type={showPassword ? "text" : "password"}
-              {...register("password")}
-              className="h-[62px] w-full rounded-[12px] border-0 bg-[var(--input)] px-[22px] text-[var(--input-foreground)] focus:border-0 focus:ring-0 focus:outline-none"
-              placeholder="Senha"
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute top-1/2 right-[22px] -translate-y-1/2 text-[var(--muted-foreground)]"
-            >
-              {showPassword ? (
-                <Eye className="h-4 w-4" />
-              ) : (
-                <EyeOff className="h-4 w-4" />
-              )}
-            </button>
-          </div>
-          {errors.password && (
-            <p className="p-1 text-sm text-[var(--danger)]">
-              {errors.password.message}
-            </p>
-          )}
-        </div>
-
-        <div>
-          <div className="relative">
-            <Input
-              id="passwordConfirmation"
-              type={showConfirmPassword ? "text" : "password"}
-              {...register("passwordConfirmation")}
-              className="h-[62px] w-full rounded-[12px] border-0 bg-[var(--input)] px-[22px] text-[var(--input-foreground)] focus:border-0 focus:ring-0 focus:outline-none"
-              placeholder="Confirme a senha"
-            />
-            <button
-              type="button"
-              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              className="absolute top-1/2 right-[22px] -translate-y-1/2 text-[var(--muted-foreground)]"
-            >
-              {showConfirmPassword ? (
-                <Eye className="h-4 w-4" />
-              ) : (
-                <EyeOff className="h-4 w-4" />
-              )}
-            </button>
-          </div>
-          {errors.passwordConfirmation && (
-            <p className="p-1 text-sm text-[var(--danger)]">
-              {errors.passwordConfirmation.message}
-            </p>
-          )}
-        </div>
+        {errors.passwordConfirmation && (
+          <p className="p-1 text-sm text-[var(--danger)]">
+            {errors.passwordConfirmation.message}
+          </p>
+        )}
 
         <Button
           type="submit"
