@@ -16,7 +16,7 @@ export default function SignUp() {
     <main className="flex min-h-screen flex-col items-center">
       {/* Header com Logo */}
       <div className="relative mb-[50px]">
-        <h1 className="mb-[30px] h-[26px] text-[24px] font-semibold text-white">
+        <h1 className="mb-[30px] h-[26px] text-[24px] font-semibold">
           Criar sua conta
         </h1>
         <p className="text-sm font-normal">
@@ -37,7 +37,7 @@ export default function SignUp() {
             id="name"
             type="text"
             required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black placeholder:text-transparent focus:border-0 focus:ring-0 focus:outline-none"
+            className="h-[62px] w-full rounded-[12px] border-0 px-[22px] placeholder:text-transparent focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Nome"
           />
           <Label
@@ -53,7 +53,7 @@ export default function SignUp() {
             id="email"
             type="email"
             required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] text-black placeholder:text-transparent focus:border-0 focus:ring-0 focus:outline-none"
+            className="h-[62px] w-full rounded-[12px] border-0 px-[22px] placeholder:text-transparent focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Email"
           />
           <Label
@@ -69,7 +69,7 @@ export default function SignUp() {
             id="password"
             type={showPassword ? "text" : "password"}
             required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black placeholder:text-transparent focus:border-0 focus:ring-0 focus:outline-none"
+            className="h-[62px] w-full rounded-[12px] border-0 px-[22px] pr-12 placeholder:text-transparent focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Senha"
           />
           <Label
@@ -96,7 +96,7 @@ export default function SignUp() {
             id="confirmPassword"
             type={showConfirmPassword ? "text" : "password"}
             required
-            className="h-[62px] w-full rounded-[12px] border-0 bg-white px-[22px] pr-12 text-black placeholder:text-transparent focus:border-0 focus:ring-0 focus:outline-none"
+            className="h-[62px] w-full rounded-[12px] border-0 px-[22px] pr-12 placeholder:text-transparent focus:border-0 focus:ring-0 focus:outline-none"
             placeholder="Confirme a senha"
           />
           <Label
@@ -131,7 +131,7 @@ export default function SignUp() {
           <span className="w-full border-t border-gray-500" />
         </div>
         <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-[#141414] px-5 text-gray-400">
+          <span className="px-5 font-medium dark:text-gray-400">
             ou continue com
           </span>
         </div>
