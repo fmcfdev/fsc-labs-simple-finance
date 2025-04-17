@@ -123,4 +123,15 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+  div {
+    @apply bg-background text-foreground;
+  }
+
+  input {
+    @apply bg-input text-foreground border ring;
+  }
+
+  h1 {
+    @apply text-foreground;
+  }
 }
