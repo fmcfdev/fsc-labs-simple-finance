@@ -20,7 +20,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${inter.className}`} cz-shortcut-listen="false">
-        <div className="max-w-[390px] p-[30px]" style={{ margin: "0 auto" }}>
+        <div
+          className="h-screen max-w-[390px] p-[30px]"
+          style={{ margin: "0 auto" }}
+        >
           <Header />
           {children}
         </div>
