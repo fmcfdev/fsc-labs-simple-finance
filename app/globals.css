@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 body {
-  @apply min-h-screen bg-[#141414] text-white antialiased;
+  @apply min-h-screen  text-white antialiased;
 }
 
 @theme inline {

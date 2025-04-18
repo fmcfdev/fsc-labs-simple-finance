@@ -2,11 +2,17 @@ import Image from "next/image";
 import { Button } from "./_lib/components/ui/button";
 import Logo from "./_components/Logo";
 import Link from "next/link";
+import { ModeToggle } from "./_components/modeToggle";
 
 const Home = () => {
   return (
     <main className="flex w-full flex-col">
-      <Logo className="mb-[50px]" />
+      <div className="flex justify-between">
+      <Logo className="mb-[50px] "  />
+      <span className="flex justify-end"><ModeToggle/></span>
+      </div>
+      
+     
       <Image
         src="/images/simple-finance-home.svg"
         width={330}
