@@ -12,6 +12,7 @@ import { loginFormSchema } from "../_forms/schemas/user";
 import { z } from "zod";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
+import { ModeToggle } from "../_components/modeToggle";
 
 type LoginFormData = z.infer<typeof loginFormSchema>;
 
@@ -42,7 +43,12 @@ export default function SignIn() {
   return (
     <main className="flex h-full flex-col items-center space-y-12">
       <div className="relative space-y-12">
-        <Logo className="mb-[50px]" />
+        <div className="flex justify-between">
+          <Logo className="mb-[50px]" />
+          <span className="flex justify-end">
+            <ModeToggle />
+          </span>
+        </div>
 
         <h1 className="mb-[30px] h-7 text-2xl font-semibold text-white">
           Entrar na sua conta

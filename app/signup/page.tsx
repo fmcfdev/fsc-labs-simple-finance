@@ -12,6 +12,7 @@ import { useAuthContext } from "../_contexts/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupFormSchema } from "../_forms/schemas/user";
 import { z } from "zod";
+import { ModeToggle } from "../_components/modeToggle";
 
 type SignUpFormData = z.infer<typeof signupFormSchema>;
 
@@ -51,10 +52,12 @@ export default function SignUp() {
     <main className="flex min-h-screen flex-col items-center">
       {/* Header com Logo */}
       <div className="relative mb-[50px]">
-        <Logo className="mb-[50px]" />
+        <Logo className="mb-[50px] bg-slate-600" />
+        <span className="absolute top-0 right-[2px]"> 
+          <ModeToggle/></span>
 
         <h1 className="mb-[30px] h-[26px] text-[24px] font-semibold text-white">
-          Criar sua conta
+          Criar sua
         </h1>
         <p className="text-sm font-normal">
           Se já possui uma conta, você consegue fazer{" "}
