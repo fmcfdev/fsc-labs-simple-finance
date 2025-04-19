@@ -9,7 +9,6 @@ import { Button } from "../_lib/components/ui/button";
 import { useAuthContext } from "../_contexts/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupFormSchema } from "../_forms/schemas/user";
-import { z } from "zod";
 import ThemeToggleBar from "../_components/ThemeToggle";
 import { FloatingLabel } from "../_components/FloatingLabelInput";
 
@@ -63,11 +62,11 @@ export default function SignUp() {
           Criar sua conta
         </h1>
         <div className="flex flex-col gap-1">
-          <p className="text-sm font-normal text-white">
-            Se já possui uma conta, você consegue.
+          <p className="text-sm font-normal">
+            Se já possui uma conta, você consegue
           </p>
           <div className="flex items-center space-x-2">
-            <span className="text-sm font-normal text-white">fazer</span>
+            <span className="text-sm font-normal">fazer</span>
             <Link
               href="/signin"
               className="text-sm font-semibold text-green-500 underline decoration-green-500 decoration-2 underline-offset-4 hover:text-green-400"
@@ -133,7 +132,7 @@ export default function SignUp() {
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-[22px] top-1/2 -translate-y-1/2 text-[var(--muted-foreground)]"
+            className="absolute top-1/2 right-[22px] -translate-y-1/2 text-[var(--muted-foreground)]"
           >
             {showPassword ? (
               <Eye className="h-4 w-4" />
@@ -159,7 +158,7 @@ export default function SignUp() {
           <button
             type="button"
             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-            className="absolute right-[22px] top-1/2 -translate-y-1/2 text-[var(--muted-foreground)]"
+            className="absolute top-1/2 right-[22px] -translate-y-1/2 text-[var(--muted-foreground)]"
           >
             {showConfirmPassword ? (
               <Eye className="h-4 w-4" />
