@@ -5,10 +5,10 @@ import Image from "next/image";
 export function OAuthProviders() {
   return (
     <div className="flex w-full flex-col gap-10">
-      <div className="flex w-full items-center text-xs text-gray-400 uppercase">
-        <div className="flex-grow border-t border-gray-600" />
+      <div className="flex w-full items-center text-xs uppercase">
+        <div className="flex-grow border-t" />
         <span className="px-4">ou continue com</span>
-        <div className="flex-grow border-t border-gray-600" />
+        <div className="flex-grow border-t" />
       </div>
 
       <div className="flex justify-center space-x-4">

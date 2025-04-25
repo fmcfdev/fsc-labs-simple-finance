@@ -1,9 +1,29 @@
+"use client";
+
 import Image from "next/image";
 import { Button } from "./_lib/components/ui/button";
 import Link from "next/link";
+
 import ThemeToggle from "./_components/ThemeToggle";
 
+import { useRouter } from "next/navigation";
+import { useAuthContext } from "./_contexts/auth";
+import { useEffect } from "react";
+
 const Home = () => {
+  const router = useRouter();
+  const { user, isInitializing } = useAuthContext();
+
+  useEffect(() => {
+    if (user) {
+      router.push("/dashboard");
+    }
+  }, [user, router]);
+
+  if (isInitializing || user) {
+    return null;
+  }
+
   return (
     <main className="flex w-full flex-col">
       <ThemeToggle />

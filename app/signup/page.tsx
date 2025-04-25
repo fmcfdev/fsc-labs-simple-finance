@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Button } from "../_lib/components/ui/button";
@@ -11,12 +11,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { signupFormSchema } from "../_forms/schemas/user";
 import { z } from "zod";
 import ThemeToggleBar from "../_components/ThemeToggle";
-import { FloatingLabel } from "../_components/FloatingLabelInput";
+import { FloatingLabelInput } from "../_components/FloatingLabelInput";
+import { OAuthProviders } from "../_components/OAuthProviders";
 
 type SignUpFormData = z.infer<typeof signupFormSchema>;
 
 export default function SignUp() {
-  const { signup } = useAuthContext();
+  const router = useRouter();
+  const { user, isInitializing, signup } = useAuthContext();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -46,6 +48,16 @@ export default function SignUp() {
       console.error("Erro ao realizar o cadastro:", error);
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      router.push("/dashboard");
+    }
+  }, [user, router]);
+
+  if (isInitializing || user) {
+    return null;
+  }
 
   return (
     <main className="flex min-h-screen flex-col">
@@ -77,7 +89,7 @@ export default function SignUp() {
         className="mb-[50px] w-full space-y-[20px]"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <FloatingLabel
+        <FloatingLabelInput
           id="firstName"
           type="text"
           label="Primeiro nome"
@@ -90,7 +102,7 @@ export default function SignUp() {
           </p>
         )}
 
-        <FloatingLabel
+        <FloatingLabelInput
           id="lastName"
           type="text"
           label="Sobrenome"
@@ -103,7 +115,7 @@ export default function SignUp() {
           </p>
         )}
 
-        <FloatingLabel
+        <FloatingLabelInput
           id="email"
           type="email"
           label="Email"
@@ -117,7 +129,7 @@ export default function SignUp() {
         )}
 
         <div className="relative">
-          <FloatingLabel
+          <FloatingLabelInput
             id="password"
             type={showPassword ? "text" : "password"}
             label="Senha"
@@ -143,7 +155,7 @@ export default function SignUp() {
         )}
 
         <div className="relative">
-          <FloatingLabel
+          <FloatingLabelInput
             id="passwordConfirmation"
             type={showConfirmPassword ? "text" : "password"}
             label="Confirme a senha"
@@ -175,65 +187,7 @@ export default function SignUp() {
           Criar Conta
         </Button>
       </form>
-
-      <div className="relative mb-[50px] w-full">
-        <div className="absolute inset-0 flex items-center">
-          <span className="w-full border-t" />
-        </div>
-        <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-[var(--background)] px-5">ou continue com</span>
-        </div>
-      </div>
-
-      <div className="flex justify-center space-x-4 pb-8">
-        {/* Facebook Button */}
-        <Button
-          type="button"
-          variant="outline"
-          className="h-9 w-9 rounded-full border-0 bg-gradient-to-b from-[#18acfe] to-[#0163e0] p-0"
-          asChild
-        >
-          <Link
-            href="/auth/facebook"
-            className="flex items-center justify-center"
-          >
-            <Image
-              src="/images/facebook.svg"
-              alt="Facebook"
-              width={12}
-              height={12}
-            />
-          </Link>
-        </Button>
-
-        {/* Apple Button */}
-        <Button
-          type="button"
-          variant="outline"
-          className="h-9 w-9 rounded-full border-0 bg-[#283544] p-0 hover:bg-[#283544]"
-          asChild
-        >
-          <Link href="/auth/apple" className="flex items-center justify-center">
-            <Image src="/images/apple.svg" alt="Apple" width={16} height={16} />
-          </Link>
-        </Button>
-        {/* Google Button */}
-        <Button
-          type="button"
-          variant="outline"
-          className="rounded-full border-0 bg-[#141414] p-0 hover:bg-[#141414]"
-          asChild
-        >
-          <Link href="/auth/google">
-            <Image
-              src="/images/google.svg"
-              alt="Google"
-              width={32}
-              height={32}
-            />
-          </Link>
-        </Button>
-      </div>
+      <OAuthProviders />
     </main>
   );
 }

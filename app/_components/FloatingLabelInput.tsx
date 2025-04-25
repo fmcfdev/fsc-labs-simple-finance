@@ -7,7 +7,7 @@ interface FloatingLabelProps {
   required?: boolean;
 }
 
-export const FloatingLabel: FC<FloatingLabelProps> = ({
+export const FloatingLabelInput: FC<FloatingLabelProps> = ({
   id,
   type,
   label,

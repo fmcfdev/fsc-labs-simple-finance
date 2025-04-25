@@ -129,3 +129,17 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 9999s ease-in-out 0s;
+  -webkit-text-fill-color: var(--input-foreground);
+  caret-color: var(--input-foreground);
+  box-shadow: 0 0 0px 1000px var(--input) inset !important;
+}
+
+.dash-container {
+  @apply flex items-center justify-center w-full h-full;
+}
