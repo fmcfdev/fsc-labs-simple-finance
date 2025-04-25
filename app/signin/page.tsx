@@ -15,7 +15,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { useState, useEffect } from "react";
 
 import ThemeToggleBar from "../_components/ThemeToggle";
-import { FloatingLabelInput } from "../_components/FloatingLabelInput";
+import { FloatingLabel } from "../_components/FloatingLabelInput";
 
 type LoginFormData = z.infer<typeof loginFormSchema>;
 
@@ -72,7 +72,7 @@ export default function SignIn() {
       <div className="flex w-full flex-col justify-between space-y-[50px]">
         <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
           <div className="relative">
-            <FloatingLabelInput
+            <FloatingLabel
               id="email"
               type="email"
               label="Email"
@@ -88,7 +88,7 @@ export default function SignIn() {
 
           <div>
             <div className="relative">
-              <FloatingLabelInput
+              <FloatingLabel
                 id="password"
                 type={showPassword ? "text" : "password"}
                 label="Senha"
