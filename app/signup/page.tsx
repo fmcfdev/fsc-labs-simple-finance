@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Button } from "../_lib/components/ui/button";
@@ -16,7 +17,8 @@ import { FloatingLabel } from "../_components/FloatingLabelInput";
 type SignUpFormData = z.infer<typeof signupFormSchema>;
 
 export default function SignUp() {
-  const { signup } = useAuthContext();
+  const router = useRouter();
+  const { user, isInitializing, signup } = useAuthContext();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -46,6 +48,16 @@ export default function SignUp() {
       console.error("Erro ao realizar o cadastro:", error);
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      router.push("/dashboard");
+    }
+  }, [user, router]);
+
+  if (isInitializing || user) {
+    return null;
+  }
 
   return (
     <main className="flex min-h-screen flex-col">
