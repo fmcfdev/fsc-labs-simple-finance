@@ -1,16 +1,17 @@
-"use client";
-
 import { ExternalLinkIcon, Plus } from "lucide-react";
 import { useState } from "react";
 import { Dialog, DialogTrigger } from "../_lib/components/ui/dialog";
 import { Button } from "../_lib/components/ui/button";
 import UpsertTransactionDialog from "./UpsertTransactionDialog";
 import { DialogOverlay } from "@radix-ui/react-dialog";
+import TransactionHistory from "./TransactionHistory";
 
 export default function TransactionActions() {
   const [open, setOpen] = useState(false);
+
   return (
     <div className="w-full rounded-[12px] bg-[#242424] px-[30px] py-[35px]">
+      {/* Cabeçalho + botões */}
       <div className="flex items-center justify-between gap-[15px]">
         <h2 className="text-base font-semibold text-white">Transações</h2>
         <div className="flex gap-2">
@@ -28,6 +29,10 @@ export default function TransactionActions() {
             <ExternalLinkIcon size={14} />
           </Button>
         </div>
+      </div>
+
+      <div>
+        <TransactionHistory />
       </div>
     </div>
   );
