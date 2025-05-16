@@ -4,7 +4,7 @@ import {
 } from "../_types/transactionType";
 import TransactionBadge from "./TransactionBadge";
 
-interface TransactionPercentProps {
+export interface TransactionPercentProps {
   transactionType: TransactionType;
   percentNumber: number;
   showAmount?: boolean;

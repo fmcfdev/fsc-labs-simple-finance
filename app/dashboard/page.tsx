@@ -10,10 +10,49 @@ import TransactionActions from "../_components/TransactionActions";
 import LoadingSpinner from "../_components/LoadingSpinner";
 import TransactionBreakdown from "../_components/TransactionBreakdown";
 import TransactionCard from "../_components/TransactionCard";
+import { TransactionPieChartProps } from "../_components/TransactionPieChart";
+import { TransactionType } from "../_types/transactionType";
+import { TransactionPercentProps } from "../_components/TransactionPercent";
 export default function Dashboard() {
   const [isShowAmount, setShowAmount] = useState(false);
   const { user, isInitializing } = useAuthContext();
   const router = useRouter();
+
+  const transactionPieChart: TransactionPieChartProps = {
+    data: [
+      {
+        transactionType: TransactionType.EARNING,
+        amount: 5000,
+      },
+      {
+        transactionType: TransactionType.EXPENSE,
+        amount: 2000,
+      },
+      {
+        transactionType: TransactionType.INVESTMENT,
+        amount: 3000,
+      },
+    ],
+    showAmount: isShowAmount,
+  };
+
+  const transactionPercents: TransactionPercentProps[] = [
+    {
+      transactionType: TransactionType.EARNING,
+      percentNumber: 50,
+      showAmount: isShowAmount,
+    },
+    {
+      transactionType: TransactionType.EXPENSE,
+      percentNumber: 20,
+      showAmount: isShowAmount,
+    },
+    {
+      transactionType: TransactionType.INVESTMENT,
+      percentNumber: 30,
+      showAmount: isShowAmount,
+    },
+  ];
 
   const handleShowAmount = (showAmount: boolean) => {
     setShowAmount(showAmount);
@@ -75,7 +114,10 @@ export default function Dashboard() {
         </div>
 
         <TransactionCard>
-          <TransactionBreakdown isShowAmount={isShowAmount} />
+          <TransactionBreakdown
+            transactionPieChart={transactionPieChart}
+            transactionPercents={transactionPercents}
+          />
         </TransactionCard>
       </div>
     </div>

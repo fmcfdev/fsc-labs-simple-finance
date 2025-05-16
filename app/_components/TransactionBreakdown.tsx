@@ -1,29 +1,34 @@
-import { TransactionType } from "../_types/transactionType";
-import TransactionPercent from "./TransactionPercent";
+import TransactionPercent, {
+  TransactionPercentProps,
+} from "./TransactionPercent";
+import TransactionPieChart, {
+  TransactionPieChartProps,
+} from "./TransactionPieChart";
 
 interface TransactionBreakdownProps {
-  isShowAmount: boolean;
+  transactionPieChart: TransactionPieChartProps;
+  transactionPercents: TransactionPercentProps[];
 }
 
-const TransactionBreakdown = ({ isShowAmount }: TransactionBreakdownProps) => {
+const TransactionBreakdown = ({
+  transactionPieChart,
+  transactionPercents,
+}: TransactionBreakdownProps) => {
   return (
-    <div className="text-black">
+    <div>
       <div className="flex flex-col items-center justify-center gap-2">
-        <TransactionPercent
-          transactionType={TransactionType.EARNING}
-          percentNumber={50}
-          showAmount={isShowAmount}
+        <TransactionPieChart
+          data={transactionPieChart.data}
+          showAmount={transactionPieChart.showAmount}
         />
-        <TransactionPercent
-          transactionType={TransactionType.EXPENSE}
-          percentNumber={30}
-          showAmount={isShowAmount}
-        />
-        <TransactionPercent
-          transactionType={TransactionType.INVESTMENT}
-          percentNumber={20}
-          showAmount={isShowAmount}
-        />
+        {transactionPercents.map((transactionPercent) => (
+          <TransactionPercent
+            key={transactionPercent.transactionType}
+            transactionType={transactionPercent.transactionType}
+            percentNumber={transactionPercent.percentNumber}
+            showAmount={transactionPercent.showAmount}
+          />
+        ))}
       </div>
     </div>
   );

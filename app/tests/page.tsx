@@ -9,6 +9,9 @@ import { TransactionType } from "../_types/transactionType";
 import TransactionTypeSelector from "../_components/TransactionTypeSelector";
 import TransactionItemsCard from "../_components/TransactionItemsCard";
 import TransactionPercent from "../_components/TransactionPercent";
+import TransactionPieChart, {
+  TransactionPieChartProps,
+} from "../_components/TransactionPieChart";
 
 export default function ComponentTest() {
   const [period, setPeriod] = useState<IPeriod>({
@@ -17,6 +20,24 @@ export default function ComponentTest() {
   });
   const handleSelectedMonth = (period: IPeriod) => {
     setPeriod(period);
+  };
+
+  const transactionPieChart: TransactionPieChartProps = {
+    data: [
+      {
+        transactionType: TransactionType.EARNING,
+        amount: 0,
+      },
+      {
+        transactionType: TransactionType.EXPENSE,
+        amount: 0,
+      },
+      {
+        transactionType: TransactionType.INVESTMENT,
+        amount: 0,
+      },
+    ],
+    showAmount: true,
   };
 
   return (
@@ -113,6 +134,10 @@ export default function ComponentTest() {
       <div>
         <div className="text-sm">Percent Transaction</div>
         <div className="flex w-full flex-col items-center justify-center gap-2 border-2 p-5">
+          <TransactionPieChart
+            data={transactionPieChart.data}
+            showAmount={transactionPieChart.showAmount}
+          />
           <TransactionPercent
             transactionType={TransactionType.EARNING}
             percentNumber={50}

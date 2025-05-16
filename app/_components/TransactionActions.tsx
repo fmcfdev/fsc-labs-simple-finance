@@ -17,9 +17,11 @@ export default function TransactionActions() {
         <div className="flex gap-2">
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger>
-              <Button className="flex h-[30.29px] transform items-center gap-[3.74px] rounded-[5px] bg-neutral-700 px-[10px] text-xs text-white transition-transform hover:scale-105 hover:bg-neutral-600">
-                <Plus size={14} />
-                Adicionar
+              <Button asChild>
+                <span className="flex h-[30.29px] transform items-center gap-[3.74px] rounded-[5px] bg-neutral-700 px-[10px] text-xs text-white transition-transform hover:scale-105 hover:bg-neutral-600">
+                  <Plus size={14} />
+                  Adicionar
+                </span>
               </Button>
             </DialogTrigger>
             <DialogOverlay className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm" />
