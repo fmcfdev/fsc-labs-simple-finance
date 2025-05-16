@@ -3,6 +3,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../_lib/components/ui/dialog";
+import TransactionHistory from "./TransactionHistory";
 
 export default function UpsertTransactionDialog() {
   return (
@@ -17,6 +18,9 @@ export default function UpsertTransactionDialog() {
           Adicionar Transação
         </DialogTitle>
       </DialogHeader>
+      <div>
+        <TransactionHistory />
+      </div>
     </DialogContent>
   );
 }

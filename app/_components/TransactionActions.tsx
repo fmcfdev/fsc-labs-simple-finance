@@ -4,7 +4,6 @@ import { Dialog, DialogTrigger } from "../_lib/components/ui/dialog";
 import { Button } from "../_lib/components/ui/button";
 import UpsertTransactionDialog from "./UpsertTransactionDialog";
 import { DialogOverlay } from "@radix-ui/react-dialog";
-import TransactionHistory from "./TransactionHistory";
 
 export default function TransactionActions() {
   const [open, setOpen] = useState(false);
@@ -31,10 +30,6 @@ export default function TransactionActions() {
             <ExternalLinkIcon size={14} />
           </Button>
         </div>
-      </div>
-
-      <div>
-        <TransactionHistory />
       </div>
     </div>
   );
