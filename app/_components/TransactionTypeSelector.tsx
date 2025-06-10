@@ -1,12 +1,15 @@
-import { useState } from "react";
 import { TransactionType } from "../_types/transactionType";
 import TransactionTypeOption from "./TransactionTypeOption";
 
-const TransactionTypeSelector = () => {
-  const [selectedType, setSelectedType] = useState<TransactionType>(
-    TransactionType.EARNING,
-  );
+interface TransactionTypeSelectorProps {
+  value: TransactionType;
+  onChange: (type: TransactionType) => void;
+}
 
+const TransactionTypeSelector = ({
+  value,
+  onChange,
+}: TransactionTypeSelectorProps) => {
   const types = [
     TransactionType.EARNING,
     TransactionType.EXPENSE,
@@ -14,13 +17,13 @@ const TransactionTypeSelector = () => {
   ];
 
   return (
-    <div className="flex w-full items-center justify-center gap-3">
+    <div className="flex w-full items-center justify-between gap-3">
       {types.map((type) => (
         <TransactionTypeOption
           key={type}
           type={type}
-          isSelected={selectedType === type}
-          onClick={() => setSelectedType(type)}
+          isSelected={value === type}
+          onClick={() => onChange(type)}
         />
       ))}
     </div>

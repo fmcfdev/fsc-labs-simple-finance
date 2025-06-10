@@ -24,7 +24,7 @@ export default function TransactionActions() {
               </Button>
             </DialogTrigger>
             <DialogOverlay className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm" />
-            <UpsertTransactionDialog />
+            <UpsertTransactionDialog onClose={() => setOpen(false)} />
           </Dialog>
           <Button className="flex h-[30.29px] w-[30.29px] transform items-center gap-[3.74px] rounded-[5px] bg-neutral-700 px-[10px] text-xs text-white transition-transform hover:scale-105 hover:bg-neutral-600">
             <ExternalLinkIcon size={14} />
