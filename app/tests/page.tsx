@@ -14,6 +14,9 @@ import TransactionPieChart, {
 } from "../_components/TransactionPieChart";
 
 export default function ComponentTest() {
+  const [selectedType, setSelectedType] = useState<TransactionType>(
+    TransactionType.EARNING,
+  );
   const [period, setPeriod] = useState<IPeriod>({
     startDate: new Date(),
     endDate: new Date(),
@@ -46,7 +49,10 @@ export default function ComponentTest() {
       <div>
         <div className="text-sm">TransactionType Selector</div>
         <div className="flex w-full flex-col items-center justify-center border-2 p-5">
-          <TransactionTypeSelector />
+          <TransactionTypeSelector
+            value={selectedType}
+            onChange={setSelectedType}
+          />
         </div>
       </div>
 
