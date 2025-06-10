@@ -146,8 +146,8 @@ body::-webkit-scrollbar {
 .dark {
   /* #141414 */
   --background: oklch(0.19 0 0);
-  /* #c1c1c1 */
-  --foreground: oklch(0.81 0 0);
+  /* #f3f3f3*/
+  --foreground: oklch(0.964 0 0);
   /* #242424 */
   --card: oklch(0.26 0 0);
   /* #fafafa */

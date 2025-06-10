@@ -19,7 +19,8 @@ const TransactionTypeOption = ({
   const { color, label } = TransactionTypeConfig[type];
   return (
     <button
-      className="h-11 w-[84px] cursor-pointer truncate rounded-[10px] border-2 px-3 text-[14px] font-semibold"
+      type="button"
+      className="h-11 w-full cursor-pointer truncate rounded-[10px] border-2 px-3 text-[14px] font-semibold"
       style={{
         borderColor: isSelected ? color : "var(--card-border)",
         color: isSelected ? color : "var(--label-foreground)",

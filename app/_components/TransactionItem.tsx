@@ -1,20 +1,27 @@
 import { SquarePenIcon } from "lucide-react";
 import { TransactionType } from "../_types/transactionType";
 import TransactionBadge from "./TransactionBadge";
+import { stringCurrencyPtBRToNumber } from "../_services/CurrencyUtils";
 
 interface TransactionItemProps {
+  transactionItem: TransactionItemType;
+}
+
+export type TransactionItemType = {
   transactionType: TransactionType;
   transactionName: string;
   transactionValue: string;
   transactionDate: string;
-}
+};
 
-const TransactionItem = ({
-  transactionType,
-  transactionName,
-  transactionValue,
-  transactionDate,
-}: TransactionItemProps) => {
+const TransactionItem = ({ transactionItem }: TransactionItemProps) => {
+  const {
+    transactionType,
+    transactionName,
+    transactionValue,
+    transactionDate,
+  } = transactionItem;
+
   return (
     <div className="flex w-full justify-between gap-4">
       <div className="flex items-center gap-3">
@@ -29,7 +36,7 @@ const TransactionItem = ({
             {new Intl.NumberFormat("pt-BR", {
               style: "currency",
               currency: "BRL",
-            }).format(Number(transactionValue))}
+            }).format(stringCurrencyPtBRToNumber(transactionValue))}
           </div>
           <div className="text-xs text-[var(--card-foreground)]">
             {transactionDate}
